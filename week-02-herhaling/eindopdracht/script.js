@@ -32,4 +32,6 @@ form.addEventListener('submit', function (event) {
   const klantniveau = getKlantniveau(bedrag);
 
   result.textContent = 'Je betaalt €' + totaal.toFixed(2) + '. Klantniveau: ' + klantniveau;
+  amountInput.value = '';
+  discountInput.value = '';
 });
