@@ -12,6 +12,8 @@ form.addEventListener('submit', (event) => {
   const email = document.querySelector('#email').value;
   const age = document.querySelector('#age').value;
 
+  const profileCard = `
+    <div class="profile-card">
       <h3>${name}</h3>
       <p>Email: ${email}</p>
       <p>Leeftijd: ${age}</p>
