@@ -9,14 +9,14 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
 
   const name = document.querySelector('#name').value;
-  const email = document.querySelector('#email').value;
-  const age = document.querySelector('#age').value;
+  const role = document.querySelector('#role').value;
+  const department = document.querySelector('#department').value;
 
   const profileCard = `
     <div class="profile-card">
       <h3>${name}</h3>
-      <p>Email: ${email}</p>
-      <p>Leeftijd: ${age}</p>
+      <p>Functie: ${role}</p>
+      <p>Afdeling: ${department}</p>
     </div>
   `;
 
