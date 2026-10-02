@@ -17,11 +17,36 @@ let searchTerm = '';
 let sorting = '';
 
 const showProducts = (products) => {
-  // Toon elk product als een <article> in #products
-  // Laat in #counter de hoeveelheid producten zien
+  const productsContainer = document.getElementById('products');
+  productsContainer.replaceChildren();
+
+  for (const product of products) {
+    const article = document.createElement('article');
+    article.innerHTML = `
+      <h3>${product.name}</h3>
+      <p>Categorie: ${product.category}</p>
+      <p>Prijs: €${product.price}</p>
+      <p>Op voorraad: ${product.stock ? 'Ja' : 'Nee'}</p>
+    `;
+    productsContainer.appendChild(article);
+  }
+
+  const totalResults = productsContainer.children.length;
+    document.getElementById('counter').textContent = `Producten: ${totalResults}`;
 };
 
 const filterProducts = () => {
+  let filtered = products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
+
+if (sorting === 'low') {
+  filtered.sort((a, b) => a.price - b.price);
+}
+
+if (sorting === 'high') {
+  filtered.sort((a, b) => b.price - a.price);
+}
+
   // Maak een variabele 'filtered' aan door de products array te filteren op searchTerm
   // Gebruik hiervoor filter() en includes() en toLowerCase()
 
@@ -35,8 +60,23 @@ const filterProducts = () => {
 // Maak een eventlistener voor de #search-bar input
 // Sla de waarde op in de searchTerm variabele en roep filterProducts() aan
 
+document.getElementById('search-bar').addEventListener('input', (e) => {
+  searchTerm = e.target.value;
+  filterProducts();
+});
+
+
 // Maak een eventlistener voor de #sort-low button
 // Zet sorting op 'low' en roep filterProducts() aan
+
+document.getElementById('sort-low').addEventListener('click', () => {
+  sorting = 'low';
+  filterProducts();
+});
+document.getElementById('sort-high').addEventListener('click', () => {
+  sorting = 'high';
+  filterProducts();
+});
 
 // Maak een eventlistener voor de #sort-high button
 // Zet sorting op 'high' en roep filterProducts() aan
