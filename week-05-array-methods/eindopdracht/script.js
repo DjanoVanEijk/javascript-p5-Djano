@@ -47,27 +47,14 @@ if (sorting === 'high') {
   filtered.sort((a, b) => b.price - a.price);
 }
 
-  // Maak een variabele 'filtered' aan door de products array te filteren op searchTerm
-  // Gebruik hiervoor filter() en includes() en toLowerCase()
-
-  // Filter hier op sorting:
-  // als sorting 'low' is, sorteer van laag naar hoog op prijs
-  // als sorting 'high' is, sorteer van hoog naar laag op prijs
-
   showProducts(filtered);
 };
 
-// Maak een eventlistener voor de #search-bar input
-// Sla de waarde op in de searchTerm variabele en roep filterProducts() aan
 
 document.getElementById('search-bar').addEventListener('input', (e) => {
   searchTerm = e.target.value;
   filterProducts();
 });
-
-
-// Maak een eventlistener voor de #sort-low button
-// Zet sorting op 'low' en roep filterProducts() aan
 
 document.getElementById('sort-low').addEventListener('click', () => {
   sorting = 'low';
@@ -78,7 +65,5 @@ document.getElementById('sort-high').addEventListener('click', () => {
   filterProducts();
 });
 
-// Maak een eventlistener voor de #sort-high button
-// Zet sorting op 'high' en roep filterProducts() aan
 
 filterProducts();
