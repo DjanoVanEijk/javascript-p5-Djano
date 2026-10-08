@@ -4,6 +4,38 @@ const people = [
   { name: 'Sara', age: 22, city: 'Utrecht' },
 ];
 
+const originalList = document.getElementById('origineel');
+const copiedList = document.getElementById('kopie');
+
+// 1. Originele lijst met alleen naam en stad
+const origineleLijst = people.map(({ name, city }) => {
+  return `${name} - ${city}`;
+});
+
+document.querySelector('#origineel').innerHTML += `
+  <ul>
+    ${origineleLijst.map(item => `<li>${item}</li>`).join('')}
+  </ul>
+`;
+
+// 2. Nieuwe array zonder de originele te wijzigen
+const aangepasteKopie = people.map(person => {
+  return {
+    ...person,
+    city: 'Den Haag'
+  };
+});
+
+// 3. Toon de aangepaste kopie
+const kopieLijst = aangepasteKopie.map(({ name, city }) => {
+  return `${name} - ${city}`;
+});
+
+document.querySelector('#kopie').innerHTML += `
+  <ul>
+    ${kopieLijst.map(item => `<li>${item}</li>`).join('')}
+  </ul>
+`;
 
 // 1. Toon in #origineel de originele lijst met alleen namen en steden.
 //    Gebruik destructuring in je .map().

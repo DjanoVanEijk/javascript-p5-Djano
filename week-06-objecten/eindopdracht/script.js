@@ -10,12 +10,25 @@ let filter = 'all';
 const showUsers = (users) => {
   // Gebruik destructuring voor elke user: const { name, email, role, active } = user
   // Toon elke user als een <article> in #users
+
+  const origineleLijst = users.map(({ name, email, role, active }) => {
+    return `<article>
+      <h3>${name}</h3>
+      <p>Email: ${email}</p>
+      <p>Role: ${role}</p>
+      <p>Active: ${active}</p>
+    </article>`;
+  });
+
+  document.getElementById('users').innerHTML = origineleLijst.join('');
 };
 
 const filterUsers = () => {
   // Als filter 'admin' is, toon alleen gebruikers met role === 'admin'
   // Anders toon je alle gebruikers
-  // Roep showUsers() aan met de gefilterde lijst
+  // Roep showUsers() aan met de gefilterde lijst\
+
+  
 };
 
 // Maak een eventlistener voor de #filter-admin button
