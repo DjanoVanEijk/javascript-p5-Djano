@@ -8,9 +8,6 @@ const users = [
 let filter = 'all';
 
 const showUsers = (users) => {
-  // Gebruik destructuring voor elke user: const { name, email, role, active } = user
-  // Toon elke user als een <article> in #users
-
   const origineleLijst = users.map(({ name, email, role, active }) => {
     return `<article>
       <h3>${name}</h3>
@@ -24,22 +21,50 @@ const showUsers = (users) => {
 };
 
 const filterUsers = () => {
-  // Als filter 'admin' is, toon alleen gebruikers met role === 'admin'
-  // Anders toon je alle gebruikers
-  // Roep showUsers() aan met de gefilterde lijst\
+  let filteredUsers = users;
 
-  
+  if (filter === 'admin') {
+    filteredUsers = users.filter((user) => user.role === 'admin');
+  }
+
+  showUsers(filteredUsers);
 };
 
-// Maak een eventlistener voor de #filter-admin button
-// Zet filter op 'admin' en roep filterUsers() aan
+document.getElementById('filter-admin').addEventListener('click', () => {
+  filter = 'admin';
+  filterUsers();
+});
 
-// Maak een eventlistener voor de #filter-all button
-// Zet filter op 'all' en roep filterUsers() aan
+document.getElementById('filter-all').addEventListener('click', () => {
+  filter = 'all';
+  filterUsers();
+});
 
-// Maak een eventlistener voor het #user-form submit event
-// Lees naam, email en role uit de invoervelden
-// Maak een nieuw user object aan met spread op een default object
-// Voeg toe aan de array en roep filterUsers() aan
+document.getElementById('user-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const role = document.getElementById('role').value;
+
+  if (!name || !email) {
+    return;
+  }
+
+  const defaultUser = {
+    active: true,
+  };
+
+  const newUser = {
+    ...defaultUser,
+    name,
+    email,
+    role,
+  };
+
+  users.push(newUser);
+  event.target.reset();
+  filterUsers();
+});
 
 filterUsers();
