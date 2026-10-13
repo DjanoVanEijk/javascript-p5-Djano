@@ -1,5 +1,5 @@
-// Fout gevonden: _______________
-// Oplossing: _______________
+// Fout gevonden: er zat een extra komma in het json bestand
+// Oplossing: haal de komma weg
 
 fetch('./products.json')
   .then(r => r.json())

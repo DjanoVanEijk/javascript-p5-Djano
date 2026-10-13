@@ -1,7 +1,7 @@
-// Fout gevonden: _______________
-// Oplossing: _______________
+// Fout gevonden: er stond new.json inplaats van new.json
+// Oplossing: verander new naar news en de verbinding werkt weer
 
-fetch('./new.json')
+fetch('./news.json')
   .then(r => r.json())
   .then(messages => {
     const list = document.querySelector('#results');
@@ -12,3 +12,4 @@ fetch('./new.json')
     });
   })
   .catch(error => console.error('Fout:', error));
+

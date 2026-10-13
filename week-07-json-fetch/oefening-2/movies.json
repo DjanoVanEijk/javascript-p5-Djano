@@ -1,1 +1,5 @@
-[]
+[
+  { "title": "film1", "director": "director1", "year": 2020, "genre": "drama" },
+  { "title": "film2", "director": "director2", "year": 2021, "genre": "comedy" },
+  { "title": "film3", "director": "director3", "year": 2022, "genre": "action" }
+]
