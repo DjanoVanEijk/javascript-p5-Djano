@@ -105,6 +105,12 @@ main {
   color: white;
 }
 
+.favorite-btn.is-favorite {
+  background: #e5e7eb;
+  color: #374151;
+  border-color: #9ca3af;
+}
+
 .favorite-btn:disabled {
   background: #fef3c7;
   color: #b45309;
